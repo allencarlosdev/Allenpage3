@@ -1,0 +1,15 @@
+.containerNavbar {
+    @apply max-w-7xl mx-auto px-2 ;
+}
+
+@media(min-width:640px){
+    .containerNavbar {
+        @apply px-6;
+    }
+}
+
+@media(min-width:1024px){
+    .containerNavbar {
+        @apply px-8;
+    }
+}
