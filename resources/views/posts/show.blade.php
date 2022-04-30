@@ -22,7 +22,7 @@
                     @foreach($similarities as $similarity)
                         <li class="mb-4">
                             <a class="flex" href="{{ route('posts.show', $similarity) }}">
-                                <img class="w-36 h-24 object-center object-cover" src="{{ Storage::url($similarity->image->url) }}" alt="">
+                                <img class="w-36 h-28 object-center object-cover" src="{{ Storage::url($similarity->image->url) }}" alt="">
                                 <span class="ml-2 text-gray-600">{{ $similarity->name }}</span>
                             </a>
                         </li>
