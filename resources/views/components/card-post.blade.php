@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="px-6 pt-4 pb-2">
+    <div class="px-6 pt-4 pb-4">
         @foreach($post->tags as $tag)
             <a href="{{ route('posts.tag', $tag) }}" class="inline-block bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-white mr-2">{{ $tag->name }}</a>
         @endforeach
