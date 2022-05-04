@@ -7,13 +7,41 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-@stop
+    <div class="card">
+        <div class="card-body">
+            {!! Form::open(['route' => 'admin.categories.store']) !!}
+                <div class="form-group">
+                    {!! Form::label('name', 'Name') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter the name of the category']) !!}
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    {!! Form::label('slug', 'Slug') !!}
+                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter the slug of the category', 'readonly']) !!}
+
+                    @error('slug')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {!! Form::submit('Create category', ['class'=>'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+        </div>
+    </div>
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script>
+        $("#name").keyup(function(){
+            var str= $(this).val();
+            var trims = $.trim(str)
+            var slug = trims.replace(/[^a-z0-9]+/g,'-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+            $("#slug").val(slug.toLowerCase())
+        })
+    </script>
+@endsection

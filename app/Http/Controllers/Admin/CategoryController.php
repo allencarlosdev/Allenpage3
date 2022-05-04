@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\StoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -35,9 +36,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $category = Category::create($request->all());
+        return redirect()->route('admin.categories.edit', $category);
     }
 
     /**
@@ -46,7 +48,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $Category)
+    public function show(category $category)
     {
         return view('admin.categories.show', compact('category'));
     }
@@ -57,7 +59,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $Category)
+    public function edit(category $category)
     {
         return view('admin.categories.edit', compact('category'));
     }
@@ -69,7 +71,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $Category)
+    public function update(Request $request, category $category)
     {
         //
     }
@@ -80,7 +82,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $Category)
+    public function destroy(category $category)
     {
         //
     }
