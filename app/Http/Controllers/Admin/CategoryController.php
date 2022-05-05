@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -39,7 +40,7 @@ class CategoryController extends Controller
     public function store(StoreRequest $request)
     {
         $category = Category::create($request->all());
-        return redirect()->route('admin.categories.edit', $category);
+        return redirect()->route('admin.categories.edit', $category)->with('info','The category was created successfully');
     }
 
     /**
@@ -71,9 +72,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(UpdateRequest $request, category $category)
     {
-        //
+        $category->update($request->all());
+
+        return redirect()->route('admin.categories.edit', $category)->with('info','The category was updated successfully');
     }
 
     /**
@@ -84,6 +87,8 @@ class CategoryController extends Controller
      */
     public function destroy(category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('info','The category was removed successfully');
     }
 }

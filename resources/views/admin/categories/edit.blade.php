@@ -7,9 +7,14 @@
 @stop
 
 @section('content')
+@if(session('info'))
+    <div class="alert alert-success">
+        <strong>{{ session('info') }}</strong>
+    </div>
+@endif
 <div class="card">
     <div class="card-body">
-        {!! Form::open(['route' => 'admin.categories.store']) !!}
+        {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'put']) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name') !!}
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter the name of the category']) !!}
@@ -27,7 +32,7 @@
                 @enderror
             </div>
 
-            {!! Form::submit('Create category', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Update category', ['class'=>'btn btn-primary']) !!}
 
         {!! Form::close() !!}
     </div>
@@ -39,5 +44,13 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script>
+        $("#name").keyup(function(){
+            var str= $(this).val();
+            var trims = $.trim(str)
+            var slug = trims.replace(/[^a-z0-9]+/g,'-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+            $("#slug").val(slug.toLowerCase())
+        })
+    </script>
+@endsection
