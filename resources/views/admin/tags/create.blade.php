@@ -3,21 +3,16 @@
 @section('title', 'Allenpage3')
 
 @section('content_header')
-    <h1>Edit Categories</h1>
+    <h1>Create Tags</h1>
 @stop
 
 @section('content')
-@if(session('info'))
-    <div class="alert alert-success">
-        <strong>{{ session('info') }}</strong>
-    </div>
-@endif
 <div class="card">
     <div class="card-body">
-        {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'put']) !!}
+        {!! Form::open(['route' => 'admin.tags.store']) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter the name of the category']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter the name of the tag']) !!}
 
                 @error('name')
                     <span class="text-danger">{{ $message }}</span>
@@ -25,14 +20,14 @@
             </div>
             <div class="form-group">
                 {!! Form::label('slug', 'Slug') !!}
-                {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter the slug of the category', 'readonly']) !!}
+                {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter the slug of the tag', 'readonly']) !!}
 
                 @error('slug')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
-            {!! Form::submit('Update category', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Create tag', ['class'=>'btn btn-primary']) !!}
 
         {!! Form::close() !!}
     </div>
