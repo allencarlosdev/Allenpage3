@@ -2,7 +2,9 @@
     <div class="card-header">
         <input wire:model="search" class="form-control" placeholder="Enter the name of the post">
     </div>
-
+    <div class="card-header">
+        <a class="btn btn-secondary" href="{{ route('admin.posts.create') }}"> New post</a>
+    </div>
     @if($posts->count())
         <div class="card-body">
             <table class="table table-striped">
