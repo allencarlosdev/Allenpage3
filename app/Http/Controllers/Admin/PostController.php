@@ -118,7 +118,7 @@ class PostController extends Controller
      */
     public function destroy(post $post)
     {
-        //dd($post);
-        return view('admin.posts.destroy');
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('info', 'The post was deleted successfully');
     }
 }
