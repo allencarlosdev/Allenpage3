@@ -76,6 +76,8 @@ class PostController extends Controller
      */
     public function edit(post $post)
     {
+        $this->authorize('author', $post);
+
         $categories = Category::pluck('name', 'id');
         $tags = Tag::all();
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
@@ -90,6 +92,8 @@ class PostController extends Controller
      */
     public function update(UpdateRequest $request, post $post)
     {
+        $this->authorize('author', $post);
+
         $post->update($request->all());
         if ($request->file('file')) {
             $url =Storage::put('posts', $request->file('file'));
@@ -118,6 +122,7 @@ class PostController extends Controller
      */
     public function destroy(post $post)
     {
+        $this->authorize('author', $post);
         $post->delete();
         return redirect()->route('admin.posts.index')->with('info', 'The post was deleted successfully');
     }
