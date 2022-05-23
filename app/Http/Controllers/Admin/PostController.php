@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\Tag;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
-use Illuminate\Support\Facades\Storage;
+
 class PostController extends Controller
 {
     public function __construct()
@@ -53,6 +55,7 @@ class PostController extends Controller
                 'url' => $url
             ]);
         }
+        Cache::flush();
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
@@ -92,6 +95,9 @@ class PostController extends Controller
         if ($request->tags) {
             $post->tags()->sync($request->tags);
         }
+
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit', $post)->with('info', 'The post was updated successfully');
     }
 
@@ -99,7 +105,11 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         $this->authorize('author', $post);
+
         $post->delete();
+
+        Cache::flush();
+
         return redirect()->route('admin.posts.index')->with('info', 'The post was deleted successfully');
     }
 }
