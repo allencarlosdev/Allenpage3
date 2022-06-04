@@ -21,7 +21,7 @@ class PostController extends Controller
         if (Cache::has($key)) {
             $posts = Cache::get($key);
         } else {
-            $posts= Post::where('status', 2)->latest('id')->paginate(8);
+            $posts= Post::where('status', 2)->latest('id')->paginate(5);
             Cache::put($key, $posts);
         }
 
@@ -46,7 +46,7 @@ class PostController extends Controller
         $posts = Post::where('category_id', $category->id)
                         ->where('status',2)
                         ->latest('id')
-                        ->paginate(6);
+                        ->paginate(5);
         return view('posts.category', compact('posts', 'category'));
     }
 

@@ -4,7 +4,7 @@
         <div class="text-lg text-gray-500 mb-2">
             {!!$post->extract!!}
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             {{-- Main content --}}
             <div class="lg:col-span-2">
                 <figure>
