@@ -50,4 +50,4 @@ DOCKER with LARAVEL SAIL
 ![App Screenshot](https://github.com/allencarlosdev/Allenpage3/blob/main/public/img/allenpage3.svg)
 
 ## Dashboard
-![App Screenshot](https://github.com/allencarlosdev/Allenpage3/blob/main/public/img/dasboard.svg)
+![App Screenshot](https://github.com/allencarlosdev/Allenpage3/blob/main/public/img/dashboard.svg)
