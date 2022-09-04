@@ -1,6 +1,4 @@
-# Allenpage3
-
-_**Number of pages for the portfolio :** 3/6_
+# Allen Blog
 
 **Web Theme :**
 
