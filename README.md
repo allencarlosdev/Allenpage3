@@ -49,3 +49,7 @@ DOCKER with LARAVEL SAIL
 
 ## Dashboard
 ![App Screenshot](https://github.com/allencarlosdev/Allenpage3/blob/main/public/img/dashboard.svg)
+
+## LIVE
+
+https://allenpage3-production.up.railway.app/
