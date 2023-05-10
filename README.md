@@ -34,7 +34,7 @@ The objective is to create a complete web, both the backend part and the fronten
 - BOOTSTRAP FOR (ADMINISTRATION PANEL)
 - TAILWIND FOR (USER PAGE)
 - USING CKEDITOR FOR POST CREATION
-- USING THE POLCY IN LARAVEL
+- USING THE POLICIES IN LARAVEL
 
 
 
