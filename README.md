@@ -52,4 +52,4 @@ DOCKER with LARAVEL SAIL
 
 ## LIVE
 
-https://allenpage3-production.up.railway.app/
+[https://allenpage3-production.up.railway.app/](https://allen-blog.fly.dev/)
